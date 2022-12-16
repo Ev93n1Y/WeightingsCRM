@@ -22,7 +22,7 @@ public class JdbcUserDetails implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         try {
-            UserDto dto = service.findByEmail(username);
+            UserDto dto = service.findByName(username);
             return new UserDetails() {
                 @Override
                 public List<SimpleGrantedAuthority> getAuthorities() {
