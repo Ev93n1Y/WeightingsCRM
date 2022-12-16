@@ -19,7 +19,7 @@
                 <thead>
                     <tr>
                         <th style="text-align: center">id</th>
-                        <th style="text-align: center">email</th>
+                        <th style="text-align: center">name</th>
                         <th style="text-align: center">password</th>
                         <th style="text-align: center">first name</th>
                         <th style="text-align: center">last name</th>
@@ -29,7 +29,7 @@
                 <tbody>
                     <tr th:each="user : ${users}">
                         <td th:text="${user.id}"></td>
-                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.name}"></td>
                         <td th:text="${user.password}"></td>
                         <td th:text="${user.firstName}"></td>
                         <td th:text="${user.lastName}"></td>
