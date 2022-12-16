@@ -21,7 +21,7 @@ public class UserService implements CrudService<UserDto>{
 
     @Override
     public List<UserDto> findAll() {
-        return repository.findAll(Sort.by("email"))
+        return repository.findAll(Sort.by("name"))
                 .stream()
                 .map(converter::toDto)
                 .collect(Collectors.toList());
@@ -34,8 +34,8 @@ public class UserService implements CrudService<UserDto>{
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public UserDto findByEmail(String email) {
-        return converter.toDto(repository.findByName(email));
+    public UserDto findByName(String name) {
+        return converter.toDto(repository.findByName(name));
     }
 
     @Override
