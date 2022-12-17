@@ -9,7 +9,7 @@ import ua.app.weightings.model.dto.UserDto;
 @Service
 public class UserConverter implements Convertible<UserDto, UserDao> {
     @Override
-    public UserDto toDto(final UserDao productDao) {
+    public UserDto toDto(UserDao productDao) {
         UserDto userDto = new UserDto();
         userDto.setId(productDao.getId());
         userDto.setName(productDao.getName());
@@ -24,7 +24,7 @@ public class UserConverter implements Convertible<UserDto, UserDao> {
     }
 
     @Override
-    public UserDao toDao(final UserDto userDto) {
+    public UserDao toDao(UserDto userDto) {
         return new UserDao(
                 userDto.getId(),
                 userDto.getName(),
