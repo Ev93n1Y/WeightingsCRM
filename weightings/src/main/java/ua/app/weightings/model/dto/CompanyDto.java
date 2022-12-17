@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import ua.app.weightings.model.dao.RoleDao;
+import ua.app.weightings.model.dao.EventDao;
+import ua.app.weightings.model.dao.ProductDao;
 
 import java.util.Set;
 import java.util.UUID;
@@ -14,20 +15,11 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Data
 @ToString
-public class UserDto {
+public class CompanyDto {
     private UUID id;
 
     @Size(max = 100)
-    private String name;
+    private String company;
 
-    @Size(max = 100)
-    private String password;
-
-    @Size(max = 100)
-    private String firstName;
-
-    @Size(max = 100)
-    private String lastName;
-
-    private Set<RoleDao> roles;
+    private Set<EventDao> events;
 }
