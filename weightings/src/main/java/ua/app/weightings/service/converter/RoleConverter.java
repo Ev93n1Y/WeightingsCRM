@@ -7,22 +7,19 @@ import ua.app.weightings.model.dto.RoleDto;
 @Service
 public class RoleConverter implements Convertible<RoleDto, RoleDao> {
     @Override
-    public RoleDto toDto(RoleDao roleDao) {
+    public RoleDto toDto(RoleDao dao) {
         RoleDto roleDto = new RoleDto();
-        roleDto.setId(roleDao.getId());
-        roleDto.setRole(roleDao.getRole());
-        roleDto.setUsers(roleDto.getUsers());
-        //roleDto.setUsers(roleDao.getUsers().stream().map(new UserConverter()::toDto).collect(Collectors.toSet()));
+        roleDto.setId(dao.getId());
+        roleDto.setRole(dao.getRole());
+        roleDto.setUsers(dao.getRoleUsers());
         return roleDto;
     }
 
     @Override
-    public RoleDao toDao(RoleDto roleDto) {
+    public RoleDao toDao(RoleDto dto) {
         return new RoleDao(
-                roleDto.getId(),
-                roleDto.getRole()
-                //roleDto.getUsers()
-                //roleDto.getUsers().stream().map(new UserConverter()::toDao).collect(Collectors.toSet())
+                dto.getId(),
+                dto.getRole()
         );
     }
 }

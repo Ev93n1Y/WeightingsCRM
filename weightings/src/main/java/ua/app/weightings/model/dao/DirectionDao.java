@@ -13,17 +13,18 @@ import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
-@Getter
 @EqualsAndHashCode(of = {"id", "direction"})
 @ToString(of = {"id", "direction"})
 @Entity
 @Table(name = "directions")
 public class DirectionDao {
+    @Getter
     @Id
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
     private UUID id;
 
+    @Getter
     @Column(name = "direction", length = 100, nullable = false, unique = true)
     private String direction;
 

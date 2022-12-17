@@ -10,23 +10,26 @@ import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
-@Getter
 @EqualsAndHashCode(of = {"id", "driver", "first_name", "last_name"})
 @ToString(of = {"id", "driver", "first_name", "last_name"})
 @Entity
 @Table(name = "drivers")
 public class DriverDao {
+    @Getter
     @Id
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
     private UUID id;
 
+    @Getter
     @Column(name = "driver", length = 100, nullable = false, unique = true)
     private String driver;
 
+    @Getter
     @Column(name = "first_name", length = 100, nullable = false)
     private String first_name;
 
+    @Getter
     @Column(name = "last_name", length = 100, nullable = false)
     private String last_name;
 

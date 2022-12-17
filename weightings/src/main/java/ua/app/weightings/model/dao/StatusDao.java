@@ -10,17 +10,18 @@ import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
-@Getter
 @EqualsAndHashCode(of = {"id", "status"})
 @ToString(of = {"id", "status"})
 @Entity
 @Table(name = "statuses")
 public class StatusDao {
+    @Getter
     @Id
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
     private UUID id;
 
+    @Getter
     @Column(name = "status", length = 100, nullable = false, unique = true)
     private String status;
 

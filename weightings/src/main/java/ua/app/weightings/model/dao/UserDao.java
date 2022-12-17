@@ -10,26 +10,30 @@ import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
-@Getter
 @EqualsAndHashCode(of = {"id", "name", "firstName", "lastName"})
 @ToString(of = {"id", "name", "firstName", "lastName"})
 @Entity
 @Table(name = "users")
 public class UserDao {
+    @Getter
     @Id
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
     private UUID id;
 
+    @Getter
     @Column(name = "name", length = 100, nullable = false, unique = true)
     private String name;
 
+    @Getter
     @Column(name = "password", length = 100, nullable = false)
     private String password;
 
+    @Getter
     @Column(name = "first_name", length = 100)
     private String firstName;
 
+    @Getter
     @Column(name = "last_name", length = 100)
     private String lastName;
 

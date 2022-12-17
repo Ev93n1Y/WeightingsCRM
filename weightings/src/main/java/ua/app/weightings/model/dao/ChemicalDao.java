@@ -23,7 +23,6 @@ public class ChemicalDao {
 
 
     //???? do we need product here?
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "product_id")
     private ProductDao product;

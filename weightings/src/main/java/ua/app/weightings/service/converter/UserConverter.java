@@ -16,10 +16,7 @@ public class UserConverter implements Convertible<UserDto, UserDao> {
         userDto.setPassword(productDao.getPassword());
         userDto.setLastName(productDao.getLastName());
         userDto.setFirstName(productDao.getFirstName());
-        userDto.setRoles(productDao.getRoles());
-        //userDto.setRoles(productDao.getRoles().stream()
-        //        .map(new RoleConverter()::toDto)
-        //        .collect(Collectors.toSet()));
+        userDto.setRoles(productDao.getUserRoles());
         return userDto;
     }
 
@@ -31,10 +28,6 @@ public class UserConverter implements Convertible<UserDto, UserDao> {
                 userDto.getPassword(),
                 userDto.getFirstName(),
                 userDto.getLastName()
-                //userDto.getRoles()
-                //userDto.getRoles().stream()
-                //        .map(new RoleConverter()::toDao)
-                //        .collect(Collectors.toSet())
         );
     }
 }

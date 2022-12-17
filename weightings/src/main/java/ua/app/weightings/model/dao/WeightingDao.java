@@ -35,7 +35,6 @@ public class WeightingDao {
     @Column(name = "netto")
     private Integer netto;
 
-    @Setter
     @OneToOne(
             mappedBy = "weighting",
             cascade = CascadeType.ALL, orphanRemoval = true

@@ -24,7 +24,6 @@ public class EventDao {
     @Column(name = "event", length = 100, nullable = false)
     private String event;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "user_id")
     private UserDao user;
@@ -32,42 +31,34 @@ public class EventDao {
     @Column(name = "date_time")
     private Date date_time;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "status_id")
     private StatusDao status;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "company_id")
     private CompanyDao company;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "driver_id")
     private DriverDao driver;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "truck_id")
     private TruckDao truck;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "product_id")
     private ProductDao product;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "chemical_id")
     private ChemicalDao chemical;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "weighting_id")
     private WeightingDao weighting;
 
-    @Setter
     @ManyToOne()
     @JoinColumn(name = "direction_id")
     private DirectionDao direction;
