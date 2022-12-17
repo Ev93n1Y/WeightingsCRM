@@ -26,12 +26,8 @@ public class StatusDao {
 
     @OneToMany(
             mappedBy = "status",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinColumn(name = "event_id")
-    /*@JoinTable(
-            name = "events",
-            joinColumns = {@JoinColumn(name = "status_id")}
-    )*/
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
     private Set<EventDao> events = new HashSet<>();
 
     public StatusDao(UUID id, String status/*, Set<EventDao> events*/) {

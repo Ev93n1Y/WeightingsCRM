@@ -29,12 +29,8 @@ public class DirectionDao {
 
     @OneToMany(
             mappedBy = "direction",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinColumn(name = "event_id")
-    /*@JoinTable(
-            name = "events",
-            joinColumns = {@JoinColumn(name = "direction_id")}
-    )*/
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
     private Set<EventDao> events = new HashSet<>();
 
     public DirectionDao(UUID id, String direction/*, Set<EventDao> events*/) {

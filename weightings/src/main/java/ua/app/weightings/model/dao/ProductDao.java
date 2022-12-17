@@ -29,12 +29,8 @@ public class ProductDao {
 
     @OneToMany(
             mappedBy = "product",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinColumn(name = "event_id")
-    /*@JoinTable(
-            name = "events",
-            joinColumns = {@JoinColumn(name = "product_id")}
-    )*/
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
     private Set<EventDao> events = new HashSet<>();
 
     public ProductDao(UUID id, String product/*, Set<EventDao> events*/) {

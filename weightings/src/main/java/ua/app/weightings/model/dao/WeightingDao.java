@@ -38,12 +38,8 @@ public class WeightingDao {
     @Setter
     @OneToOne(
             mappedBy = "weighting",
-            cascade = CascadeType.ALL, orphanRemoval = true)
-    //@JoinColumn(name = "event_id")
-    /*@JoinTable(
-            name = "events",
-            joinColumns = {@JoinColumn(name = "weighting_id")}
-    )*/
+            cascade = CascadeType.ALL, orphanRemoval = true
+    )
     private EventDao event;
 
     public WeightingDao(UUID id, Date brutto_time, Integer brutto, Date tara_time, Integer tara, Integer netto, EventDao event) {

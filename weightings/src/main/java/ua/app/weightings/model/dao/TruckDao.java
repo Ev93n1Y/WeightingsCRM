@@ -29,12 +29,8 @@ public class TruckDao {
 
     @OneToMany(
             mappedBy = "truck",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinColumn(name = "event_id")
-    /*@JoinTable(
-            name = "events",
-            joinColumns = {@JoinColumn(name = "truck_id")}
-    )*/
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
     private Set<EventDao> events = new HashSet<>();
 
     public TruckDao(UUID id, String truck/*, Set<EventDao> events*/) {

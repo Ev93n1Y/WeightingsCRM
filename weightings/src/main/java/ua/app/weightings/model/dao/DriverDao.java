@@ -32,12 +32,8 @@ public class DriverDao {
 
     @OneToMany(
             mappedBy = "driver",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinColumn(name = "event_id")
-    /*@JoinTable(
-            name = "events",
-            joinColumns = {@JoinColumn(name = "driver_id")}
-    )*/
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
     private Set<EventDao> events = new HashSet<>();
 
     public DriverDao(UUID id, String driver, String first_name, String last_name/*, Set<EventDao> events*/) {

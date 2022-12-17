@@ -26,12 +26,8 @@ public class CompanyDao {
 
     @OneToMany(
             mappedBy = "company",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinColumn(name = "event_id")
-    /*@JoinTable(
-            name = "events",
-            joinColumns = {@JoinColumn(name = "company_id")}
-    )*/
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
     private Set<EventDao> events = new HashSet<>();
 
     public CompanyDao(UUID id, String company/*, Set<EventDao> events*/) {
