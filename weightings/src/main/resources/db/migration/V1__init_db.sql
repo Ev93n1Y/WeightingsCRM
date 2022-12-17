@@ -15,8 +15,8 @@ CREATE TABLE roles
 
 CREATE TABLE user_roles
 (
-    role_id     UUID            NOT NULL REFERENCES roles (id),
-    user_id     UUID            NOT NULL REFERENCES users (id),
+    role_id     UUID            NOT NULL REFERENCES roles(id),
+    user_id     UUID            NOT NULL REFERENCES users(id),
 	PRIMARY KEY (role_id, user_id)
 );
 
@@ -35,7 +35,9 @@ CREATE TABLE companies
 CREATE TABLE drivers
 (
     id          UUID            PRIMARY KEY ,
-    driver      VARCHAR(100)    NOT NULL UNIQUE
+    driver      VARCHAR(100)    NOT NULL UNIQUE,
+    first_name  VARCHAR(100)    NOT NULL,
+    last_name   VARCHAR(100)    NOT NULL
 );
 
 CREATE TABLE trucks
@@ -53,8 +55,14 @@ CREATE TABLE products
 CREATE TABLE chemicals
 (
     id          UUID            PRIMARY KEY ,
-    product_id  UUID            REFERENCES products (id),
+    product_id  UUID            REFERENCES products(id),
     humidity    INTEGER         NOT NULL
+);
+
+CREATE TABLE directions
+(
+    id          UUID            PRIMARY KEY ,
+    direction   VARCHAR(100)    NOT NULL UNIQUE
 );
 
 CREATE TABLE weightings
@@ -67,16 +75,27 @@ CREATE TABLE weightings
     netto       INTEGER
 );
 
-CREATE TABLE directions
+CREATE TABLE events
 (
-    id          UUID            PRIMARY KEY ,
-    direction   VARCHAR(100)    NOT NULL
+    id           UUID            PRIMARY KEY ,
+    event        VARCHAR(100)    NOT NULL,
+    user_id      UUID            REFERENCES users(id) NOT NULL,
+    date_time    DATE            NOT NULL,
+    status_id    UUID            REFERENCES statuses(id) NOT NULL,
+    company_id   UUID            REFERENCES companies(id),
+    driver_id    UUID            REFERENCES drivers(id),
+    truck_id     UUID            REFERENCES trucks(id),
+    --may be put chemical to product?
+    product_id   UUID            REFERENCES products(id),
+    chemical_id  UUID            REFERENCES chemicals(id),
+    weighting_id UUID            REFERENCES weightings(id) NOT NULL,
+    direction_id UUID            REFERENCES directions(id) NOT NULL
 );
 
 CREATE TABLE warehouse
 (
     id          UUID            PRIMARY KEY ,
-    product_id  UUID            REFERENCES products (id),
-    summary       INTEGER         NOT NULL
+    product_id  UUID            REFERENCES products(id),
+    summary     INTEGER         NOT NULL
 );
 
