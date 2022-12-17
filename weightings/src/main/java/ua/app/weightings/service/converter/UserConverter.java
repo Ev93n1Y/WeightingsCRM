@@ -30,8 +30,8 @@ public class UserConverter implements Convertible<UserDto, UserDao> {
                 userDto.getName(),
                 userDto.getPassword(),
                 userDto.getFirstName(),
-                userDto.getLastName(),
-                userDto.getRoles()
+                userDto.getLastName()
+                //userDto.getRoles()
                 //userDto.getRoles().stream()
                 //        .map(new RoleConverter()::toDao)
                 //        .collect(Collectors.toSet())
