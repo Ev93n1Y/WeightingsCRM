@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode(of = {"id", "driver", "first_name", "last_name"})
-@ToString(of = {"id", "company", "first_name", "last_name"})
+@ToString(of = {"id", "driver", "first_name", "last_name"})
 @Entity
 @Table(name = "drivers")
 public class DriverDao {
@@ -38,6 +38,7 @@ public class DriverDao {
 
     public DriverDao(UUID id, String driver, String first_name, String last_name/*, Set<EventDao> events*/) {
         this.id = id;
+        this.driver = driver;
         this.first_name = first_name;
         this.last_name = last_name;
         //this.events = events;
