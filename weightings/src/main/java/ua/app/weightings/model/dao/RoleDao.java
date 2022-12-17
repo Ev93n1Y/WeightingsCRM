@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -29,11 +31,23 @@ public class RoleDao {
             inverseJoinColumns = @JoinColumn(name = "user_id"),
             joinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<UserDao> users;
+    private Set<UserDao> users = new HashSet<>();
 
-    public RoleDao(UUID id, String role, Set<UserDao> users) {
+    public RoleDao(UUID id, String role/*, Set<UserDao> users*/) {
         this.id = id;
         this.role = role;
-        this.users = users;
+        //this.users = users;
+    }
+
+    public Set<UserDao> getRoleUsers() {
+        return Collections.unmodifiableSet(users);
+    }
+
+    public void addRoleUser(UserDao userDao) {
+        users.add(userDao);
+    }
+
+    public void removeRoleUser(UserDao userDao) {
+        users.remove(userDao);
     }
 }
