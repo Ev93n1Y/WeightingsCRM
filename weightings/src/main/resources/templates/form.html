@@ -1,9 +1,59 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 </head>
 <body>
+    <div th:fragment="newEventButton">
+        <form action="/event/create" method="GET">
+            <button type="submit">create new event</button><br>
+        </form>
+    </div>
 
+    <div th:fragment="newEventForm">
+
+        <button th:company-url="@{/company}"
+                onclick="location.href=this.getAttribute('company-url')">...</button><br>
+        <button th:driver-url="@{/driver}"
+                onclick="location.href=this.getAttribute('driver-url')">...</button><br>
+
+        <form action="/event/create" method="POST">
+            <label>loged username:</label>
+            <input type="text" name="user" th:value="${authUser.name}" disabled/><br>
+            <input type="hidden" name="userId" th:value="${authUser.id}"/>
+            <label>input company name:</label>
+            <input type="text" name="company"/>
+            <button th:company-url="@{/company}"
+                    onclick="location.href=this.getAttribute('company-url')">...</button><br>
+            <label>input driver name:</label>
+            <input type="text" name="driver"/>
+            <button th:driver-url="@{/driver}"
+                    onclick="location.href=this.getAttribute('driver-url')">...</button><br>
+            <label>input truck name:</label>
+            <input type="text" name="truck"/>
+            <button th:truck-url="@{/truck/get}"
+                    onclick="location.href=this.getAttribute('truck-url')">...</button><br>
+            <label>input product name:</label>
+            <input type="text" name="product"/>
+            <button th:product-url="@{/product/get}"
+                    onclick="location.href=this.getAttribute('product-url')">...</button><br>
+            <label>input chemical name:</label>
+            <input type="text" name="chemical"/>
+            <button th:chemical-url="@{/chemical/get}"
+                    onclick="location.href=this.getAttribute('chemical-url')">...</button><br>
+            <label>input weighting name:</label>
+            <input type="text" name="weighting"/>
+            <button th:weighting-url="@{/weighting/get}"
+                    onclick="location.href=this.getAttribute('weighting-url')">...</button><br>
+            <label>input direction name:</label>
+            <input type="text" name="direction"/>
+            <button th:direction-url="@{/direction/get}"
+                    onclick="location.href=this.getAttribute('direction-url')">...</button><br>
+            <button type="submit">add new event</button><br>
+        </form>
+
+    </div>
     <div th:fragment="editUser">
         <label>id: </label>
         <label th:text="${user.id}"></label><br>
