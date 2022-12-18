@@ -1,0 +1,212 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+    <body>
+        <div th:fragment="usersTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Логін</th>
+                        <th>Пароль</th>
+                        <th>Ім'я</th>
+                        <th>Прізвище</th>
+                        <th>Роль</th>
+                        <th>...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.password}"></td>
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:each="role : ${user.roles}" th:value="${role.role}" th:text="${role.role}"></td>
+                        <td>
+                            <button th:edit-url="@{/users/update(id=${user.id})}"
+                                    onclick="location.href=this.getAttribute('edit-url')">
+                                Змінити
+                            </button>
+                            <button th:del-url="@{/users/delete(id=${user.id})}"
+                                    onclick="location.href=this.getAttribute('del-url')">
+                                Видалити
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+        </div>
+        <div th:fragment="chemicalTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Вологість</th>
+                    <th>Продукт</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="chemical : ${chemicals}">
+                    <td th:text="${chemical.id}"></td>
+                    <td th:text="${chemical.humidity}"></td>
+                    <td th:text="${chemical.product?.product}"></td>
+                </tr>
+            </tbody>
+        </div>
+        <div th:fragment="companyTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Назва</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="company : ${companies}">
+                <td th:text="${company.id}"></td>
+                <td th:text="${company.company}"></td>
+            </tr>
+            </tbody>
+        </div>
+        <div th:fragment="directionTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Компанія</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="direction : ${directions}">
+                <td th:text="${direction.id}"></td>
+                <td th:text="${direction.direction}"></td>
+            </tr>
+            </tbody>
+        </div>
+        <div th:fragment="driverTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="driver : ${drivers}">
+                <td th:text="${driver.id}"></td>
+                <td th:text="${driver.first_name}"></td>
+                <td th:text="${driver.last_name}"></td>
+            </tr>
+            </tbody>
+        </div>
+        <div th:fragment="eventTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Користувач</th>
+                <th>Дата</th>
+                <th>Статус</th>
+                <th>Компнія</th>
+                <th>Водій</th>
+                <th>Авто</th>
+                <th>Продукт</th>
+                <th>Аналіз</th>
+                <th>Зважування</th>
+                <th>Маршрут</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="event : ${events}">
+                <td th:text="${event.id}"></td>
+                <td th:text="${event.user?.name}"></td>
+                <td th:text="${event.date_time}"></td>
+                <td th:text="${event.status?.status}"></td>
+                <td th:text="${event.company?.company}"></td>
+                <td th:text="${event.driver?.first_name}"></td>
+                <td th:text="${event.truck?.truck}"></td>
+                <td th:text="${event.product?.product}"></td>
+                <td th:text="${event.chemical?.id}"></td>
+                <td th:text="${event.weighting?.id}"></td>
+                <td th:text="${event.direction?.direction}"></td>
+            </tr>
+            </tbody>
+        </div>
+        <div th:fragment="productTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Продукт</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.product}"></td>
+            </tr>
+            </tbody>
+        </div>
+        <div th:fragment="roleTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Роль</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="role : ${roles}">
+                <td th:text="${role.id}"></td>
+                <td th:text="${role.role}"></td>
+            </tr>
+            </tbody>
+        </div>
+        <div th:fragment="statusTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Статус</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="status : ${statuses}">
+                <td th:text="${status.id}"></td>
+                <td th:text="${status.status}"></td>
+            </tr>
+            </tbody>
+        </div>
+        <div th:fragment="truckTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Вантажівка</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="truck : ${trucks}">
+                <td th:text="${truck.id}"></td>
+                <td th:text="${truck.truck}"></td>
+            </tr>
+            </tbody>
+        </div>
+        <div th:fragment="weightingTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Дата бутто</th>
+                <th>Брутто</th>
+                <th>Дата тара</th>
+                <th>Тара</th>
+                <th>Нетто</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="weighting : ${weightings}">
+                <td th:text="${weighting.id}"></td>
+                <td th:text="${weighting.brutto_time}"></td>
+                <td th:text="${weighting.brutto}"></td>
+                <td th:text="${weighting.tara_time}"></td>
+                <td th:text="${weighting.tara}"></td>
+                <td th:text="${weighting.netto}"></td>
+            </tr>
+            </tbody>
+        </div>
+    </body>
+</html>
