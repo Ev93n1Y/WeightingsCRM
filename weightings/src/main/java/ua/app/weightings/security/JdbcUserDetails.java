@@ -11,6 +11,7 @@ import ua.app.weightings.model.dto.UserDto;
 import ua.app.weightings.service.UserService;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +42,8 @@ public class JdbcUserDetails implements UserDetailsService {
                 public String getUsername() {
                     return dto.getName();
                 }
+
+                public UUID getId() { return dto.getId();}
 
                 public String getFirstName() { return dto.getFirstName();}
 
