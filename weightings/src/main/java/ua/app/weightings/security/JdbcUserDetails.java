@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JdbcUserDetails implements UserDetailsService {
     private final UserService service;
+    private UserDto dto;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
         try {
-            UserDto dto = service.findByName(username);
+            dto = service.findByName(username);
             return new UserDetails() {
                 @Override
                 public List<SimpleGrantedAuthority> getAuthorities() {
@@ -41,6 +41,10 @@ public class JdbcUserDetails implements UserDetailsService {
                 public String getUsername() {
                     return dto.getName();
                 }
+
+                public String getFirstName() { return dto.getFirstName();}
+
+                public String getLastName() { return dto.getLastName();}
 
                 @Override
                 public boolean isAccountNonExpired() {
