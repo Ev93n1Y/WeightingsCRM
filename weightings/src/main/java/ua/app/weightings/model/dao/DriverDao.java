@@ -10,8 +10,8 @@ import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"id", "driver", "first_name", "last_name"})
-@ToString(of = {"id", "driver", "first_name", "last_name"})
+@EqualsAndHashCode(of = {"id", "first_name", "last_name"})
+@ToString(of = {"id", "first_name", "last_name"})
 @Entity
 @Table(name = "drivers")
 public class DriverDao {
@@ -20,10 +20,6 @@ public class DriverDao {
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
     private UUID id;
-
-    @Getter
-    @Column(name = "driver", length = 100, nullable = false, unique = true)
-    private String driver;
 
     @Getter
     @Column(name = "first_name", length = 100, nullable = false)
@@ -39,9 +35,8 @@ public class DriverDao {
     )
     private Set<EventDao> events = new HashSet<>();
 
-    public DriverDao(UUID id, String driver, String first_name, String last_name/*, Set<EventDao> events*/) {
+    public DriverDao(UUID id, String first_name, String last_name/*, Set<EventDao> events*/) {
         this.id = id;
-        this.driver = driver;
         this.first_name = first_name;
         this.last_name = last_name;
         //this.events = events;

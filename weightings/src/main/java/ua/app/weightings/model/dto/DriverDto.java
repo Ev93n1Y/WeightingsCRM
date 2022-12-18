@@ -18,9 +18,6 @@ public class DriverDto {
     private UUID id;
 
     @Size(max = 100)
-    private String driver;
-
-    @Size(max = 100)
     private String first_name;
 
     @Size(max = 100)

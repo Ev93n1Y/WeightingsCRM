@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import ua.app.weightings.model.dao.*;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -15,9 +15,9 @@ import java.util.UUID;
 @ToString
 public class WeightingDto {
     private UUID id;
-    private Date brutto_time;
+    private Timestamp brutto_time;
     private Integer brutto;
-    private Date tara_time;
+    private Timestamp tara_time;
     private Integer tara;
     private Integer netto;
     private EventDao event;

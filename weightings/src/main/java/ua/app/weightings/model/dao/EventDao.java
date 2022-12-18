@@ -5,14 +5,15 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @NoArgsConstructor
 @Getter
-@EqualsAndHashCode(of = {"id", "user", "date_time", "status", "company_id",
-        "driver_id", "truck_id", "chemical_id", "weighting_id", "direction_id"})
-@ToString(of = {"id", "user", "date_time", "status", "company_id",
-        "driver_id", "truck_id", "chemical_id", "weighting_id", "direction_id"})
+@EqualsAndHashCode(of = {"id", "user", "date_time", "status", "company",
+        "driver", "truck", "chemical", "weighting", "direction"})
+@ToString(of = {"id", "user", "date_time", "status", "company",
+        "driver", "truck", "chemical", "weighting", "direction"})
 @Entity
 @Table(name = "events")
 public class EventDao {
@@ -21,15 +22,12 @@ public class EventDao {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
     private UUID id;
 
-    @Column(name = "event", length = 100, nullable = false)
-    private String event;
-
     @ManyToOne()
     @JoinColumn(name = "user_id")
     private UserDao user;
 
     @Column(name = "date_time")
-    private Date date_time;
+    private Timestamp date_time;
 
     @ManyToOne()
     @JoinColumn(name = "status_id")
@@ -63,11 +61,10 @@ public class EventDao {
     @JoinColumn(name = "direction_id")
     private DirectionDao direction;
 
-    public EventDao(UUID id, String event, UserDao user, Date date_time, StatusDao status, CompanyDao company,
+    public EventDao(UUID id, UserDao user, Timestamp date_time, StatusDao status, CompanyDao company,
                     DriverDao driver, ProductDao product, TruckDao truck, ChemicalDao chemical,
                     WeightingDao weighting, DirectionDao direction) {
         this.id = id;
-        this.event = event;
         this.user = user;
         this.date_time = date_time;
         this.status = status;
