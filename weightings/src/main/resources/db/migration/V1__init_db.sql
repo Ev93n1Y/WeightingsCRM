@@ -35,7 +35,6 @@ CREATE TABLE companies
 CREATE TABLE drivers
 (
     id          UUID            PRIMARY KEY ,
-    driver      VARCHAR(100)    NOT NULL UNIQUE,
     first_name  VARCHAR(100)    NOT NULL,
     last_name   VARCHAR(100)    NOT NULL
 );
@@ -68,9 +67,9 @@ CREATE TABLE directions
 CREATE TABLE weightings
 (
     id          UUID            PRIMARY KEY ,
-    brutto_time DATE,
+    brutto_time TIMESTAMP,
     brutto      INTEGER,
-    tara_time   DATE,
+    tara_time   TIMESTAMP,
     tara        INTEGER,
     netto       INTEGER
 );
@@ -78,9 +77,8 @@ CREATE TABLE weightings
 CREATE TABLE events
 (
     id           UUID            PRIMARY KEY ,
-    event        VARCHAR(100)    NOT NULL,
     user_id      UUID            REFERENCES users(id) NOT NULL,
-    date_time    DATE            NOT NULL,
+    date_time    TIMESTAMP       NOT NULL,
     status_id    UUID            REFERENCES statuses(id) NOT NULL,
     company_id   UUID            REFERENCES companies(id),
     driver_id    UUID            REFERENCES drivers(id),
