@@ -25,8 +25,8 @@ public class SecurityConfiguration {
         return httpSecurity
                 .csrf().disable()
                 .authorizeHttpRequests((req) -> req
-                        .requestMatchers("/", "/**").permitAll()
-                        //.requestMatchers("/users", "/users/**").hasRole("ADMIN")
+                        //.requestMatchers("/", "/**").permitAll()
+                        .requestMatchers("/users", "/users/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults())
@@ -38,4 +38,5 @@ public class SecurityConfiguration {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
