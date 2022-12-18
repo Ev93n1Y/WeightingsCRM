@@ -10,7 +10,6 @@ public class EventConverter implements Convertible<EventDto, EventDao> {
     public EventDto toDto(EventDao dao) {
         EventDto dto = new EventDto();
         dto.setId(dao.getId());
-        dto.setEvent(dao.getEvent());
         dto.setUser(dao.getUser());
         dto.setDate_time(dao.getDate_time());
         dto.setStatus(dao.getStatus());
@@ -28,7 +27,6 @@ public class EventConverter implements Convertible<EventDto, EventDao> {
     public EventDao toDao(EventDto dto) {
         return new EventDao(
                 dto.getId(),
-                dto.getEvent(),
                 dto.getUser(),
                 dto.getDate_time(),
                 dto.getStatus(),
