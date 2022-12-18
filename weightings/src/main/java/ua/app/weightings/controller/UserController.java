@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 @RestController
 public class UserController {
@@ -25,7 +25,7 @@ public class UserController {
 
     @GetMapping
     public ModelAndView get() {
-        ModelAndView result = new ModelAndView("users");
+        ModelAndView result = new ModelAndView("index");
         try {
             result.addObject("users", service.findAll());
         } catch (Exception e) {
@@ -33,6 +33,10 @@ public class UserController {
         }
         return result;
     }
+
+
+
+
 
     @PostMapping
     public RedirectView add(@ModelAttribute("user") UserDto user, @ModelAttribute("roleId") UUID roleId) {
