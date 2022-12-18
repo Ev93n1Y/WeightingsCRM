@@ -25,7 +25,7 @@ public class SecurityConfiguration {
         return httpSecurity
                 .csrf().disable()
                 .authorizeHttpRequests((req) -> req
-                        //.requestMatchers("/", "/**").permitAll()
+                        .requestMatchers("/test", "/test/**").permitAll()
                         .requestMatchers("/users", "/users/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
